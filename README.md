@@ -1,6 +1,6 @@
 # Gentleman-Skills
 
-> Community-driven AI agent skills for Claude Code, OpenCode, and other AI assistants.
+> Community-driven AI agent skills for Claude Code, OpenCode, Gemini CLI, Cursor, VS Code Copilot, Codex, Windsurf, Antigravity, and other AI assistants.
 
 Skills are specialized instruction sets that teach AI assistants how to work with specific frameworks, libraries, and patterns. They provide on-demand context so the AI writes code following best practices and conventions.
 
@@ -72,29 +72,69 @@ Skills contributed by the community and approved through our voting process.
 | [react-native](community/react-native) | React Native patterns for mobile app development with Expo and bare workflow. | @gentleman-programming |
 | [spring-boot-3](community/spring-boot-3) | Spring Boot 3 patterns for configuration, DI, and web services. | @diegnghrmr |
 
+## Supported Agents & Skills Directory
+
+Each agent reads skills from a specific directory. Copy the skills you want into the right path for your agent:
+
+| Agent | macOS / Linux | Windows |
+|-------|---------------|---------|
+| **Claude Code** | `~/.claude/skills/` | `%USERPROFILE%\.claude\skills\` |
+| **OpenCode** | `~/.config/opencode/skills/` | `%USERPROFILE%\.config\opencode\skills\` |
+| **Gemini CLI** | `~/.gemini/skills/` | `%USERPROFILE%\.gemini\skills\` |
+| **Cursor** | `~/.cursor/skills/` | `%USERPROFILE%\.cursor\skills\` |
+| **VS Code Copilot** | `~/.copilot/skills/` | `%USERPROFILE%\.copilot\skills\` |
+| **Codex** | `~/.codex/skills/` | `%USERPROFILE%\.codex\skills\` |
+| **Windsurf** | `~/.codeium/windsurf/skills/` | `%USERPROFILE%\.codeium\windsurf\skills\` |
+| **Antigravity** | `~/.gemini/antigravity/skills/` | `%USERPROFILE%\.gemini\antigravity\skills\` |
+
+Inside each `skills/` directory, every skill lives in its own folder with a `SKILL.md`:
+
+```
+skills/
+  react-19/SKILL.md
+  typescript/SKILL.md
+  angular/core/SKILL.md
+  playwright/SKILL.md
+  ...
+```
+
 ## Installation
 
-### For Claude Code / OpenCode
-
-Copy the skills you want to use to your Claude configuration:
+### Quick Start
 
 ```bash
 # Clone the repository
 git clone https://github.com/Gentleman-Programming/Gentleman-Skills.git
 
-# Copy curated skills to Claude config
+# Copy curated skills to your agent's skills directory
+# Replace <SKILLS_DIR> with the path from the table above
+
+# Example: Claude Code (macOS/Linux)
 cp -r Gentleman-Skills/curated/* ~/.claude/skills/
 
-# Or copy specific skills
+# Example: OpenCode (macOS/Linux)
+cp -r Gentleman-Skills/curated/* ~/.config/opencode/skills/
+
+# Example: Gemini CLI (macOS/Linux)
+cp -r Gentleman-Skills/curated/* ~/.gemini/skills/
+
+# Example: Cursor (macOS/Linux)
+cp -r Gentleman-Skills/curated/* ~/.cursor/skills/
+
+# Or copy specific skills only
 cp -r Gentleman-Skills/curated/react-19 ~/.claude/skills/
 cp -r Gentleman-Skills/curated/typescript ~/.claude/skills/
 ```
 
 ### Manual Installation
 
-1. Create the skills directory if it doesn't exist:
+1. Create the skills directory for your agent if it doesn't exist:
    ```bash
+   # Example for Claude Code
    mkdir -p ~/.claude/skills
+
+   # Example for Gemini CLI
+   mkdir -p ~/.gemini/skills
    ```
 
 2. Copy the skill folder(s) you want:
@@ -102,7 +142,7 @@ cp -r Gentleman-Skills/curated/typescript ~/.claude/skills/
    cp -r curated/react-19 ~/.claude/skills/
    ```
 
-3. Reference the skill in your project's `CLAUDE.md` or global `~/.claude/CLAUDE.md`:
+3. Reference the skill in your agent's configuration file (e.g., `CLAUDE.md` for Claude Code):
    ```markdown
    ## Skills
    When working with React, read `~/.claude/skills/react-19/SKILL.md` first.
